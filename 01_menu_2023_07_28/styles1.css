@@ -28,7 +28,7 @@ li{
 span {
  color:#c8c8c8;
 }
- span:hover{
+.name:hover, span:hover{
  color:#51b0e7;
 } 
  .name {
@@ -37,7 +37,5 @@ span {
    font-size:13px;
    color:#c8c8c8;
 }
-  }
-.name:hover  {
-  color:#51b0e7;
-}
+
+  
