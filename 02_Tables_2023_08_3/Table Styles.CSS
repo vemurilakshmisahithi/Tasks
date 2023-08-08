@@ -1,0 +1,167 @@
+* {
+    box-sizing:border-box;
+}
+body {
+    font-family:arial,sans-serif;
+    line-height:2;
+    background-color:#f8f9fd;
+    font-size:16px;
+}
+.table {
+    position:absolute;
+    top:2%;
+    left:4%;
+    width:90%;
+    border-collapse:collapse ;
+    background:#fff; 
+    
+}
+ .header {
+  border-bottom:4px solid #eceffa;
+  font-size:14px;
+}
+.data {
+  border:1px solid transparent ;
+  border-bottom:4px solid #eceffa;
+  border-radius:1px;
+    
+}
+
+td {
+ padding:25px;
+ font-size:14px;
+ 
+}
+th {
+  text-align:left;
+  padding:35px;
+  font-weight:initial;
+  color:#8c8c8c;
+}
+.container {
+  display: block;
+  position: relative;
+  padding-left: 20px;
+  cursor: pointer;
+  font-size: 22px;
+  margin-bottom:28px;
+  user-select: none;
+}
+.container input {
+  position: absolute;
+  cursor: pointer;
+}
+.checkmark {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  border-radius:3px;
+  background-color: #eee;
+}
+
+
+.container:hover input ~ .checkmark {
+   background-color:#40bfc1;
+   
+}
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display:none;
+  
+}
+.container:hover .checkmark:after {
+  display: block;
+}
+
+
+.container .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+  
+}
+
+button.mark {
+      background-color: transparent;
+      border:transparent;
+      color:#ee9da5;
+      float:right;
+}
+ .img-container {
+    width: 50px;
+    height: 50px;
+}
+
+ .img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.data1 {
+  
+  display:flex;
+ 
+}
+.text {
+  margin-left:25px;
+  
+}
+p {
+ margin-left:-2px;
+ margin-top:-5px;
+ color:rgba(0, 0, 0, 0.3);
+}
+
+.active {
+  display:inline-flex;
+  align-items:center;
+  padding:1px 8px;
+  border-radius:20px;
+  color:#1fa750;
+  background-color:#cff6dd;
+}
+.circle {
+  width:10px;
+  height:10px;
+  background-color:#1fa750;
+  border-radius:50%;
+  margin-right:5px;
+}
+.status{
+  font-size:14px;
+}
+.waiting {
+  display:inline-flex;
+  align-items:center;
+  padding:1px 8px;
+  border-radius:20px;
+  color:#cfa00c;
+  background-color:#fdf5dd;
+}
+.circle1 {
+ width:10px;
+  height:10px;
+  background-color:#cfa00c;
+  border-radius:50%;
+  margin-right:5px;
+}
+@media screen and (min-width: 600px) {
+   body , th , td {
+     font-size :18px;
+     
+}
+
+
+  
+
+ 
+
+  
+  
+  
