@@ -21,35 +21,36 @@ body {
     background:#fff;
     margin:70px;    
 }
- .header {
-  border-bottom:4px solid #eceffa;
-  font-size:14px;
+.header {
+   border-bottom:4px solid #eceffa;
 }
+
 .row {
   border:1px solid transparent ;
   border-bottom:4px solid #eceffa;
-  border-radius:1px;
-  
-    
+  border-radius:1px;   
+}
+.user {
+  margin-left:10px;
 }
 
 td {
  padding:18px;
  font-size:12px;
- 
+ margin-left:4px;
 }
 th {
-  text-align:left;
-  padding:35px;
   font-weight:initial;
   color:#8c8c8c;
-  
+  padding: 25px;
+  text-align:left;
 }
+
 .container {
   display:flex;
   align-items:center;
   font-size:22px;
-  margin:15px;
+  margin:0 0 0 35px;
   cursor:pointer;
   user-select:none;
 }
@@ -57,6 +58,7 @@ th {
   display:none;
 }
 .checkmark {
+  position:relative;
   height:20px;
   width:20px;
   border-radius:3px;
@@ -67,15 +69,17 @@ th {
     background-color:#40bfc1;
   }
 
-.container:hover .checkmark:after {
+.checkmark:after {
   content: "";
   display: block;
-  margin-left:2px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
   width: 5px;
   height: 10px;
   border: solid white;
   border-width: 0 3px 3px 0;
-  transform: rotate(45deg)translatex(50%);
+  transform: translate(-50%, -50%) rotate(45deg);
   visibility: hidden;
 }
 
@@ -110,18 +114,21 @@ p {
  color:rgba(0, 0, 0, 0.3);
 }
 
+
+
 .active,.waiting {
      display:inline-flex;
      align-items:center;
      padding:1px 8px;
      border-radius:20px;
+     margin-left:8px;
   }
  .active{
     background-color:#cff6dd;
     color:#1fa750;
 }
 .circle {
- background-color:#1fa750;
+ background-color:#23bd5a;
 }
 .circle,.waiting-circle{
   width:10px;
@@ -135,7 +142,7 @@ p {
   color:#cfa00c;
 }
 .waiting-circle{
-  background-color:#cfa00c;
+  background-color:#f4c73c;
 }
 
 
