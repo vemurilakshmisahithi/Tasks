@@ -1,0 +1,52 @@
+<body>
+    <p id ="demo"></p>
+    <script>
+       let x = 10;
+       let y = 5;
+       let z = 1;
+       let result = '';
+
+       switch (true) {
+        case x == y && y == z:
+            result = `x = ${x}, y = ${y}, z = ${z} are equal`;
+            break;
+
+         case x == y:
+            if (x < z) {
+                result = `x = ${x} and y = ${y} are equal and smaller than z = ${z}`;
+            } else {
+                result = `x = ${x} and y = ${y} are equal and bigger than z = ${z}`;
+           }
+           break;
+
+        case x == z:
+            if (x < y) {
+                result = `x = ${x} and z = ${z} are equal and smaller than y = ${y}`;
+            } else {
+                result = `x = ${x} and z = ${z} are equal and bigger than y = ${y}`;
+            }
+            break;
+
+        case y == z:
+            if (y < x) {
+                result = `y = ${y} and z = ${z} are equal and smaller than x = ${x}`;
+            } else {
+                result = `y = ${y} and z = ${z} are equal and bigger than x = ${x}`;
+            }
+            break;
+
+        default:
+            if (x > y && x > z) {
+                result = `x = ${x} is bigger than y = ${y} and z = ${z}`;
+            } 
+            else if (y > x && y > z) {
+                result = `y = ${y} is bigger than x = ${x} and z = ${z}`;
+            } 
+            else {
+                result = `z = ${z} is bigger than x = ${x} and y = ${y}`;
+           }
+        }
+        document.getElementById("demo").innerHTML = result;
+    </script>
+</body>
+

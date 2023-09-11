@@ -1,0 +1,29 @@
+<body>
+    <p id ="demo"></p>
+    <script>
+        let x = 5;
+        let y = 5;
+        let z = 5;
+        let result = [];
+
+        if (x == y && y == z) {
+            result.push(`x = ${x}, y = ${y}, z = ${z} are equal`);
+        }
+        else if (x == y) {
+            result.push(x < z ? `x = ${x} and y = ${y} are equal and smaller than z = ${z}` : `x = ${x} and y = ${y} are equal and bigger than z = ${z}`);
+        }
+        else if (x == z) {
+            result.push(x < y ? `x = ${x} and z = ${z} are equal and smaller than y = ${y}` : `x = ${x} and z = ${z} are equal and bigger than y = ${y}`);
+        }
+        else if (y == z) {
+            result.push(y < x ? `y = ${y} and z = ${z} are equal and smaller than x = ${x}` : `y = ${y} and z = ${z} are equal and bigger than x = ${x}`);
+        }
+        else if (result.length == 0) {
+            result.push(x > y && x > z ? `x = ${x} is bigger than y = ${y} and z = ${z}` :
+                        y > x && y > z ? `y = ${y} is bigger than x = ${x} and z = ${z}` :
+                        `z = ${z} is bigger than x = ${x} and y = ${y}`);
+}
+
+        document.getElementById("demo").innerHTML = result.join(" ");
+    </script>
+</body>
