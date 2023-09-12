@@ -1,0 +1,31 @@
+<body>
+    <p id ="demo"></p>
+    <script>
+        function compareValues(x, y) {
+            if (x == y) return `are equal`;
+            return x < y ? `are equal and smaller than` : `are equal and bigger than`;
+        }
+
+        let x = 10;
+        let y = 10;
+        let z = 5;
+        let result = '';
+
+        if (x == y && y == z) {
+                result = `x = ${x}, y = ${y}, z = ${z} are equal`;
+        } else if (x == y) {
+                result = `x = ${x} and y = ${y} ${compareValues(x, z)} z = ${z}`;
+        } else if (x == z) {
+                result = `x = ${x} and z = ${z} ${compareValues(x, y)} y = ${y}`;
+        } else if (y == z) {
+                result = `y = ${y} and z = ${z} ${compareValues(y, x)} x = ${x}`;
+        } else if (x > y && x > z) {
+                result = `x = ${x} is bigger than y = ${y} and  z = ${z}`;
+        } else if (y > x && y > z) {
+               result = `y = ${y} is bigger than x = ${x} and z = ${z}`;
+        } else if (z > x && z > y) {
+               result = `z = ${z} is bigger than x = ${x} and y = ${y}`;
+        }
+        document.getElementById("demo").innerHTML = result;
+    </script>
+</body>
