@@ -1,0 +1,34 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" type = "text/css" href = "caluclator(css).css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class = "calculator">
+        <input type = "text" id = "display" value = "0">
+        
+        <div class = "buttons">
+            <button onclick = "calculateReciprocal('^(-1)')">1/x</button>
+            <button onclick = " calculatePowerOfTwo('^2')">x<sup>2</sup></button>
+            <button onclick = "backspace('')"><i class="fas fa-delete-left"></i></button>
+            <button onclick = "appendToDisplay('/')"><i class="fas fa-divide"></i></button>
+            <button onclick = "appendToDisplay('7')">7</button>
+            <button onclick = "appendToDisplay('8')">8</button>
+            <button onclick = "appendToDisplay('9')">9</button>
+            <button onclick = "appendToDisplay('*')"><i class="fas fa-xmark"></i></button>
+            <button onclick = "appendToDisplay('4')">4</button>
+            <button onclick = "appendToDisplay('5')">5</button>
+            <button onclick = "appendToDisplay('6')">6</button>
+            <button onclick = "appendToDisplay('-')"><i class="fas fa-xmark"></i></button>
+            <button onclick = "appendToDisplay('1')">1</button>
+            <button onclick = "appendToDisplay('2')">2</button>
+            <button onclick = "appendToDisplay('3')">3</button>
+            <button onclick = "appendToDisplay('+')"><i class="fas fa-plus"></i></button>
+            <button onclick = "appendToDisplay('%')"><i class="fas fa-percent" ></i></button>
+            <button onclick = "appendToDisplay('0')">0</button>
+            <button onclick = "appendToDisplay('.')">.</button>
+            <button onclick ="calculate()"><i class="fas fa-equals"></i></button>
+        </div>
+    </div>
+   <script src = "caluclator(JS).js"></script>
+</body>
