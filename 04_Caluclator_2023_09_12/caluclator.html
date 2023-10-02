@@ -1,13 +1,56 @@
 <head>
-    <link rel = "stylesheet" type = "text/css" href = "caluclator(css).css">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+    .calculator {
+        width :345px;
+        margin : 0 auto;
+        padding : 20px;
+        background-color :#ecf6f9;
+        border-radius:5px;
+        text-align:center;
+        margin-top:80px;
+    }
+    #display {
+        width : 100%;
+        height :60px;
+        font-size :20px;
+        text-align :right;
+        border : 1px solid #eaeaea;
+        border-radius: 5px;
+        margin-bottom:25px;
+    }
+    
+    
+    .calculator button {
+        margin-bottom:5px;
+        width : 83px;
+        height : 50px;
+        border :2px solid #d4dee1;;
+        border-radius:5px;
+        padding :10px;
+        background-color:#ffffff;
+        cursor : pointer;
+        font-size:15px;
+    }
+    
+    
+   
+    .calculator button:nth-child(24) {
+        background-color:#1d6978;
+    }
+</style>    
 </head>
 <body>
     <div class = "calculator">
         <input type = "text" id = "display" value = "0">
         
         <div class = "buttons">
-            <button onclick = "calculateReciprocal('^(-1)')">1/x</button>
+            <button onclick="appendToDisplay('(')">(</button>
+            <button onclick="appendToDisplay(')')">)</button>
+            <button onclick = "calculateSquareRoot('')"><i class="fas fa-square-root-variable" ></i></button>
+            <button onclick="appendToDisplay(Math.PI)">π</button>
+            <button onclick = "clearDisplay('')">C</button>
             <button onclick = " calculatePowerOfTwo('^2')">x<sup>2</sup></button>
             <button onclick = "backspace('')"><i class="fas fa-delete-left"></i></button>
             <button onclick = "appendToDisplay('/')"><i class="fas fa-divide"></i></button>
@@ -18,7 +61,7 @@
             <button onclick = "appendToDisplay('4')">4</button>
             <button onclick = "appendToDisplay('5')">5</button>
             <button onclick = "appendToDisplay('6')">6</button>
-            <button onclick = "appendToDisplay('-')"><i class="fas fa-xmark"></i></button>
+            <button onclick = "appendToDisplay('-')"><i class="fas fa-minus"></i></button>
             <button onclick = "appendToDisplay('1')">1</button>
             <button onclick = "appendToDisplay('2')">2</button>
             <button onclick = "appendToDisplay('3')">3</button>
@@ -29,5 +72,61 @@
             <button onclick ="calculate()"><i class="fas fa-equals"></i></button>
         </div>
     </div>
-   <script src = "caluclator(JS).js"></script>
+    <script>
+    const display = document.getElementById('display');
+    let currentValue = ''; 
+    
+    function appendToDisplay(value) {
+        currentValue += value; 
+        display.value = currentValue; 
+    }
+    
+    function calculate() {
+    const result = eval(currentValue);
+    if (!isNaN(result)) {
+        display.value = result;
+        currentValue = result.toString();
+    } else {
+        display.value = 'Error';
+    }
+}
+    
+    function clearDisplay() {
+        display.value = '';
+        currentValue = ''; 
+    }
+    
+    function backspace() {
+        if (currentValue.length > 0) {
+            currentValue = currentValue.slice(0, -1); 
+            display.value = currentValue; 
+        }
+    }
+    
+    function calculatePowerOfTwo() {
+    const result = Math.pow(parseFloat(currentValue), 2);
+    if (!isNaN(result)) {
+        display.value = result;
+        currentValue = result.toString();
+    } else {
+        display.value = 'Error';
+    }
+}
+    function calculateSquareRoot() {
+    const inputValue = parseFloat(currentValue);
+    if (!isNaN(inputValue) && inputValue >= 0) {
+        const result = Math.sqrt(inputValue);
+        if (!isNaN(result)) {
+            display.value = result;
+            currentValue = result.toString();
+        } else {
+            display.value = 'Error';
+        }
+    } else {
+        display.value = 'Error';
+    }
+}
+  
+    
+   </script> 
 </body>
