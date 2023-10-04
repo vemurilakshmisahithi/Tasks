@@ -30,20 +30,16 @@ export function Product({ product, onUpdate, onDelete }) {
     <tr>
       <td>{product.id}</td>
       <td>{product.title}</td>
-      <td>{isEditing ? <input type="text" name="description" value={editedProduct.description} onChange={handleInputChange} /> : editedProduct.description}</td>
-      <td>{isEditing ? <input type="text" name="price" value={editedProduct.price} onChange={handleInputChange} /> : editedProduct.price}</td>
-      <td>{isEditing ? <input type="text" name="discountPercentage" value={editedProduct.discountPercentage} onChange={handleInputChange} /> : `${editedProduct.discountPercentage}%`}</td>
+      <td>{isEditing ? (<input type="text" name="description" value={editedProduct.description} onChange={handleInputChange}/>) : (editedProduct.description)}</td>
+      <td>{isEditing ? (<input type="text" name="price" value={editedProduct.price} onChange={handleInputChange}/>) : (editedProduct.price)}</td>
+      <td>{isEditing ? (<input type="text" name="discountPercentage" value={editedProduct.discountPercentage} onChange={handleInputChange}/>) : (`${editedProduct.discountPercentage}%`)}</td>
       <td>{editedProduct.rating}</td>
       <td>{editedProduct.stock}</td>
       <td>{editedProduct.brand}</td>
       <td>{editedProduct.category}</td>
-      <td>
-        {isEditing ? (
-          <span>
-            <button onClick={handleUpdate}>Update</button>
-          </span>
-        ) : (
-          <div className='Actions'>
+      <td>{isEditing ? (<span><button onClick={handleUpdate}>Update</button></span>) 
+      : (
+          <div className="Actions">
             <button onClick={handleEdit}>Update</button>
             <button onClick={handleDelete}>Delete</button>
           </div>
@@ -53,13 +49,12 @@ export function Product({ product, onUpdate, onDelete }) {
   );
 }
 
-
-function Task() {
+function Table() {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(10);
   const [isAdding, setIsAdding] = useState(false);
-  const [isUpdating, setIsUpdating] = useState(false); 
+  const [isUpdating, setIsUpdating] = useState(false);
   const [nextId, setNextId] = useState(31);
 
   useEffect(() => {
@@ -70,41 +65,59 @@ function Task() {
 
   const handleAdd = () => {
     setIsAdding(true);
+
     const newProduct = {
       id: nextId,
-      title: "New Product",
-      description: "",
+      title: 'New Product',
+      description: '',
       price: 0,
       discountPercentage: 0,
       rating: 0,
       stock: 0,
-      brand: "",
-      category: "",
+      brand: '',
+      category: '',
     };
+
     setNextId(nextId + 1);
-    setTimeout(() => {
-      setData([...data, newProduct]);
-      setIsAdding(false);
-    }, 2000);
+
+    fetch('https://dummyjson.com/products/add', {
+      method: 'POST',
+    })
+      .then((res) => res.json())
+      .then((addedProduct) => {
+        setData([...data, addedProduct]);
+        setIsAdding(false);
+      });
   };
 
   const handleUpdate = (editedProduct) => {
-    const updatedData = data.map((item) => {
-      if (item.id === editedProduct.id) {
-        return editedProduct;
-      }
-      return item;
-    });
-    setData(updatedData);
-    setIsUpdating(`Product with ID ${editedProduct.id} updated successfully.`);
-    setTimeout(() => {
-      setIsUpdating(false);
-    }, 3000); 
+    fetch(`https://dummyjson.com/products/${editedProduct.id}`, {
+      method: 'PUT',
+    })
+      .then((res) => res.json())
+      .then(() => {
+        const updatedData = data.map((item) => {
+          if (item.id === editedProduct.id) {
+            return editedProduct;
+          }
+          return item;
+        });
+        setData(updatedData);
+        setIsUpdating(`Product with ID ${editedProduct.id} updated successfully.`);
+        setTimeout(() => {
+          setIsUpdating(false);
+        }, 3000);
+      });
   };
 
   const handleDelete = (productId) => {
-    const updatedData = data.filter((item) => item.id !== productId);
-    setData(updatedData);
+    fetch(`https://dummyjson.com/products/${productId}`, {
+      method: 'DELETE',
+    })
+      .then(() => {
+        const updatedData = data.filter((item) => item.id !== productId);
+        setData(updatedData);
+      });
   };
 
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -115,11 +128,11 @@ function Task() {
 
   return (
     <div>
-    <div className='Addbutton'>
+      <div className="Addbutton">
         <button onClick={handleAdd} disabled={isAdding}>
-        {isAdding ? 'Adding...' : 'Add'}
+          {isAdding ? 'Adding...' : 'Add'}
         </button>
-    </div>
+      </div>
       <table className="product-table">
         <thead>
           <tr>
@@ -146,7 +159,7 @@ function Task() {
           ))}
         </tbody>
       </table>
-     
+
       <div className="pagination">
         <button onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1}>
           Previous
@@ -155,7 +168,7 @@ function Task() {
           Next
         </button>
       </div>
-      <div className = "pagelength">
+      <div className="pagelength">
         Page {currentPage} of {Math.ceil(data.length / itemsPerPage)}
       </div>
       {isUpdating && <div>{isUpdating}</div>}
@@ -163,4 +176,4 @@ function Task() {
   );
 }
 
-export default Task;
+export default Table;
